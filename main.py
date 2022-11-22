@@ -64,7 +64,7 @@ class Board:
                     self.busy.append(Dot(dot.x + i, dot.y + q))
 
     def shot(self, dot):
-        if str(self.board[dot.x][dot.y]) in 'TX.':
+        if self.board[dot.x][dot.y] in 'TX.':
             print('В данное поле уже был выстрел.')
             return True
         if self.board[dot.x][dot.y] == '■':
