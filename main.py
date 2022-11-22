@@ -18,7 +18,7 @@ class Dot:
 
 
 class Ship:
-    def __init__(self, length, bow, route):  # randrange(0, 6) for bow:
+    def __init__(self, length, bow, route):
         self.length = length
         self.bow = bow
         self.route = route
@@ -26,7 +26,6 @@ class Ship:
 
     def dots(self):
         dots = []
-
         for index in range(self.length):
             if self.route:
                 dots.append(Dot(self.bow.x, self.bow.y + index))
@@ -89,10 +88,8 @@ class Board:
 
     def __str__(self):
         res = "  | 1 | 2 | 3 | 4 | 5 | 6 |"
-
         for i, row in enumerate(self.board):
             res += f"\n{i + 1} | " + " | ".join(row) + " |"
-
         if self.hid:
             res = res.replace("■", "O")
         return res
@@ -122,7 +119,6 @@ class User(Player):
         while True:
             try:
                 x, y = map(lambda x: int(x) - 1, input().split())
-
                 if 0 <= x < 6 and 0 <= y < 6:
                     return Dot(x, y)
                 else:
@@ -142,7 +138,6 @@ class Game:
 
     def random_board(self, board):
         ships = [3, 2, 2, 1, 1, 1, 1]
-
         for _ in range(10**4):
             ship = Ship(ships[0], Dot(randrange(0, 7), randrange(0, 7)), randrange(0, 2))
             if board.add_ship(ship):
@@ -152,7 +147,6 @@ class Game:
             else:
                 return board
         return self.random_board(Board(board.hid))
-
 
     def greet(self):
         print("-" * 20)
@@ -166,7 +160,6 @@ class Game:
 
     def loop(self):
         flag = True
-
         while self.ai_board.ships and self.player_board.ships:
             print('Карта игрока:')
             print(self.player_board)
