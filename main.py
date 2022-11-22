@@ -153,8 +153,8 @@ class Game:
                 return board
         return self.random_board(Board(board.hid))
 
-    @staticmethod
-    def greet():
+
+    def greet(self):
         print("-" * 20)
         print("  Приветствуем вас  ")
         print("      в игре       ")
